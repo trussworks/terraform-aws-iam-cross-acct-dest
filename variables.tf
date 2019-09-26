@@ -3,7 +3,7 @@ variable "group_name" {
   type        = string
 }
 
-variable "source_account" {
+variable "source_account_id" {
   description = "The account id that the assume role call will be coming from."
   type        = string
 }
