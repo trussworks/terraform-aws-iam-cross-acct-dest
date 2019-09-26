@@ -1,29 +1,20 @@
-# Truss Terraform Module template
+This module creates a role based on the "group_name" variable that can be assumed by the roles listed in "source_account_role_names" from the account id defined in the "source_account" variable.
 
-This repository is meant to be a template repo we can just spin up new module repos from with our general format.
-
-## How to
-
-## Actual readme below  - Delete above here
-
-Please put a description of what this module does here
-
-## Terraform Versions
-
-_This is how we're managing the different versions._
-Terraform 0.12. Pin module version to ~> 2.0. Submit pull-requests to master branch.
-
-Terraform 0.11. Pin module version to ~> 1.0. Submit pull-requests to terraform011 branch.
+_Philosophical note_: There should be a single account in your AWS organization that manages users and groups. In that account, there will be a 1:1 mapping to a group and a role. That role may have AssumeRole permissions to multiple other roles across the accounts in the AWS organization.
+The role defined in this module should be one of those roles that can be assumed by the role in the original user management account.
+Generally speaking, the role defined in this module should also map 1:1 to that original group for access concerns. An IAM policy should be defined locally in this account for permissions and assigned to the role defined here.
 
 ## Usage
 
 ### Put an example usage of the module here
 
 ```hcl
-module "example" {
-  source = "terraform/registry/path"
-
-  <variables>
+module "aws_iam_dest_user_group_role" {
+  source = "trussworks/iam-cross-acct-dest/aws"
+  version = "1.0.0"
+  group_name = "group-name"
+  source_account = "account-id"
+  source_account_role_names = ["group-name"]
 }
 ```
 
