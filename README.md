@@ -8,8 +8,6 @@ Generally speaking, the role defined in this module should also map 1:1 to that 
 
 ## Usage
 
-### Put an example usage of the module here
-
 ```hcl
 module "aws_iam_dest_user_group_role" {
   source = "trussworks/iam-cross-acct-dest/aws"
