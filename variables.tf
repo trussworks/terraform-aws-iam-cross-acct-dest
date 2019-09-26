@@ -1,4 +1,4 @@
-variable "group_name" {
+variable "iam_role_name" {
   description = "The name for the created role. Conceptually, this should correspond to a group."
   type        = string
 }
