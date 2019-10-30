@@ -13,8 +13,8 @@ variable "source_account_role_names" {
   type        = list
 }
 
-variable "create_circleci_role" {
-  description = "Create IAM role for CircleCI user to assume."
+variable "create_role" {
+  description = "Create this IAM role."
   type        = bool
-  default     = false
+  default     = true
 }

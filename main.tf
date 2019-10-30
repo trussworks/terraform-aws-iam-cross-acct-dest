@@ -17,7 +17,7 @@ data "aws_iam_policy_document" "role_assume_role_policy" {
 }
 
 resource "aws_iam_role" "main" {
-  count              = var.create_circleci_role ? 1 : 0
+  count              = var.create_role ? 1 : 0
   name               = var.iam_role_name
   description        = "Cross-account role for ${var.iam_role_name}"
   assume_role_policy = data.aws_iam_policy_document.role_assume_role_policy.json
