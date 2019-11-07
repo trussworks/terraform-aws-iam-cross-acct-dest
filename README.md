@@ -1,6 +1,6 @@
 This module creates a role based on the "iam_role_name" variable that can be assumed by the roles listed in "source_account_role_names" from the account id defined in the "source_account_id" variable.
 
-The role in the source account must exist before creating this resource. This module should be paried with the iam-cross-acct-src module to create a role in the source account with permissions to assume the role created in this module.
+The role in the source account must exist before creating this resource. This module should be paired with the iam-cross-acct-src module to create a role in the source account with permissions to assume the role created in this module. In certain cases, the trusted relationship between source and destination may be account-based rather than role based.
 
 The source assume role call must be authenticated with MFA.
 
