@@ -13,3 +13,9 @@ variable "source_account_role_names" {
   type        = list
   default     = []
 }
+
+variable "require_mfa" {
+  description = "Whether the created policy will include MFA."
+  type        = bool
+  default     = true
+}

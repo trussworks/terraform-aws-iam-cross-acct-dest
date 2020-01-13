@@ -2,7 +2,7 @@ This module creates a role based on the "iam_role_name" variable that can be ass
 
 The role in the source account must exist before creating this resource. This module should be paired with the iam-cross-acct-src module to create a role in the source account with permissions to assume the role created in this module. In certain cases, the trusted relationship between source and destination may be account-based rather than role based.
 
-The source assume role call must be authenticated with MFA.
+The source assume role call defaults to requiring MFA.
 
 _Philosophical note_: There should be a single account in your AWS organization that manages users and groups. In that account, there will be a 1:1 mapping to a group and a role. That role may have AssumeRole permissions to multiple other roles across the accounts in the AWS organization.
 The role defined in this module should be one of those roles that can be assumed by the role in the original user management account.
@@ -26,6 +26,7 @@ module "aws_iam_dest_user_group_role" {
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
 | iam\_role\_name | The name for the created role. Conceptually, this should correspond to a group. | string | n/a | yes |
+| require\_mfa | Whether the created policy will include MFA. | bool | `"true"` | no |
 | source\_account\_id | The account id that the assume role call will be coming from. | string | n/a | yes |
 | source\_account\_role\_names | The name of the role that the assume role call will be coming from. Again, this should correspond to a group. | list | `[]` | no |
 
