@@ -11,4 +11,5 @@ variable "source_account_id" {
 variable "source_account_role_names" {
   description = "The name of the role that the assume role call will be coming from. Again, this should correspond to a group."
   type        = list
+  default     = []
 }
