@@ -14,7 +14,7 @@ data "aws_iam_policy_document" "role_assume_role_policy" {
     # and NOT check if the value is False.
     # https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html
     condition {
-      test     = "StringLikeIfExists"
+      test     = "BoolIfExists"
       variable = "aws:MultiFactorAuthPresent"
 
       values = [
