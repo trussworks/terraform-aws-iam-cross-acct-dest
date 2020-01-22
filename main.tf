@@ -10,16 +10,15 @@ data "aws_iam_policy_document" "role_assume_role_policy" {
 
     # Conditionally check for valid MFA exists. If set to false
     # aws:MultiFactorAuthPresent won't show up in the request
-    # so we need to conditionally check if the string exists.
-    # and NOT check if the value is False.
+    # so we need to remove the conditional.
     # https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html
-    condition {
-      test     = "BoolIfExists"
-      variable = "aws:MultiFactorAuthPresent"
-
-      values = [
-        tostring(var.require_mfa)
-      ]
+    dynamic "condition" {
+      for_each = var.require_mfa ? [1] : []
+      content {
+        test     = "Bool"
+        variable = "aws:MultiFactorAuthPresent"
+        values   = [tostring(var.require_mfa)]
+      }
     }
   }
 }
