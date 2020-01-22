@@ -21,14 +21,20 @@ module "aws_iam_dest_user_group_role" {
 ```
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+## Providers
+
+| Name | Version |
+|------|---------|
+| aws | n/a |
+
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|:----:|:-----:|:-----:|
-| iam\_role\_name | The name for the created role. Conceptually, this should correspond to a group. | string | n/a | yes |
-| require\_mfa | Whether the created policy will include MFA. | bool | `"true"` | no |
-| source\_account\_id | The account id that the assume role call will be coming from. | string | n/a | yes |
-| source\_account\_role\_names | The name of the role that the assume role call will be coming from. Again, this should correspond to a group. | list | `[]` | no |
+|------|-------------|------|---------|:-----:|
+| iam\_role\_name | The name for the created role. Conceptually, this should correspond to a group. | `string` | n/a | yes |
+| require\_mfa | Whether the created policy will include MFA. | `bool` | `true` | no |
+| source\_account\_id | The account id that the assume role call will be coming from. | `string` | n/a | yes |
+| source\_account\_role\_names | The name of the role that the assume role call will be coming from. Again, this should correspond to a group. | `list` | `[]` | no |
 
 ## Outputs
 
