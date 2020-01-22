@@ -8,11 +8,18 @@ data "aws_iam_policy_document" "role_assume_role_policy" {
       identifiers = length(var.source_account_role_names) > 0 ? "${formatlist(format("arn:aws:iam::%s:role/%%s", var.source_account_id), var.source_account_role_names)}" : ["${format("arn:aws:iam::%s:root", var.source_account_id)}"]
     }
 
-    # Conditionally require MFA (defaults to true)
+    # Conditionally check for valid MFA exists. If set to false
+    # aws:MultiFactorAuthPresent won't show up in the request
+    # so we need to conditionally check if the string exists.
+    # and NOT check if the value is False.
+    # https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html
     condition {
-      test     = "Bool"
+      test     = "StringLikeIfExists"
       variable = "aws:MultiFactorAuthPresent"
-      values   = [tostring(var.require_mfa)]
+
+      values = [
+        tostring(var.require_mfa)
+      ]
     }
   }
 }
