@@ -22,7 +22,7 @@ module "aws_iam_dest_user_group_role" {
 }
 ```
 
-However, if you want to make the dependency on the source role explicit, you can do it by adding the `source_account_role_names` parameter, like the following example:
+However, if you want to make the dependency on the source role explicit, you can do it by adding the `source_account_role_names` parameter, like the following example. This uses [IAM role chaining](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html), which institutes a number of restrictions; see the docs for more information.
 
 ```hcl
 module "aws_iam_dest_user_group_role" {
