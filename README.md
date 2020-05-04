@@ -8,6 +8,8 @@ _Philosophical note_: There should be a single account in your AWS organization 
 The role defined in this module should be one of those roles that can be assumed by the role in the original user management account.
 Generally speaking, the role defined in this module should also map 1:1 to that original group for access concerns. An IAM policy should be defined locally in this account for permissions and assigned to the role defined here.
 
+This module works on GovCloud.
+
 ## Usage
 
 In most cases, you will just use the `source_account_id` parameter to trust the user and group managment account; you can then keep all management of which of those users and groups can assume roles there. The following code illustrates that pattern:
@@ -35,6 +37,10 @@ module "aws_iam_dest_user_group_role" {
 ```
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+## Requirements
+
+No requirements.
+
 ## Providers
 
 | Name | Version |
@@ -44,7 +50,7 @@ module "aws_iam_dest_user_group_role" {
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:-----:|
+|------|-------------|------|---------|:--------:|
 | iam\_role\_name | The name for the created role. Conceptually, this should correspond to a group. | `string` | n/a | yes |
 | require\_mfa | Whether the created policy will include MFA. | `bool` | `true` | no |
 | source\_account\_id | The account id that the assume role call will be coming from. | `string` | n/a | yes |
