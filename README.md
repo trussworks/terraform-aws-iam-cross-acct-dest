@@ -23,6 +23,20 @@ module "aws_iam_dest_user_group_role" {
   source_account_id = "account-id"
 }
 
+```
+
+However, if you want to make the dependency on the source role explicit, you can do it by adding the `source_account_role_names` parameter, like the following example. This uses [IAM role chaining](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html), which is not a recommended method as it institutes a number of restrictions; see the docs for more information.
+
+```hcl
+module "aws_iam_dest_user_group_role" {
+  source = "trussworks/iam-cross-acct-dest/aws"
+  version = "1.0.3"
+  iam_role_name = "group-name"
+  source_account_id = "account-id"
+  source_account_role_names = ["group-name"]
+}
+```
+
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 
