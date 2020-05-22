@@ -19,3 +19,9 @@ variable "require_mfa" {
   type        = bool
   default     = true
 }
+
+variable "role_assumption_max_duration" {
+  description = "Max duration that the assumed role is assumed for Must be between 3600 and 43200 (including)"
+  type        = number
+  default     = 3600
+}

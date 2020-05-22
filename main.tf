@@ -26,7 +26,8 @@ data "aws_iam_policy_document" "role_assume_role_policy" {
 }
 
 resource "aws_iam_role" "main" {
-  name               = var.iam_role_name
-  description        = "Cross-account role for ${var.iam_role_name}"
-  assume_role_policy = data.aws_iam_policy_document.role_assume_role_policy.json
+  name                 = var.iam_role_name
+  description          = "Cross-account role for ${var.iam_role_name}"
+  assume_role_policy   = data.aws_iam_policy_document.role_assume_role_policy.json
+  max_session_duration = var.role_assumption_max_duration
 }
