@@ -25,3 +25,9 @@ variable "role_assumption_max_duration" {
   type        = number
   default     = 3600
 }
+
+variable "mfa_condition" {
+  description = "MFA condition method. Use either Bool or BoolIfExists"
+  type        = string
+  default     = "Bool"
+}

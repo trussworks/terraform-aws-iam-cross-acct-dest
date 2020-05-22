@@ -17,7 +17,7 @@ data "aws_iam_policy_document" "role_assume_role_policy" {
     dynamic "condition" {
       for_each = var.require_mfa ? [1] : []
       content {
-        test     = "Bool"
+        test     = var.mfa_condition
         variable = "aws:MultiFactorAuthPresent"
         values   = [tostring(var.require_mfa)]
       }
