@@ -12,6 +12,7 @@ This module works on GovCloud.
 
 ## Terraform Versions
 
+Terraform 0.13. Pin module version to ~> 3.X. Submit pull-requests to master branch.
 Terraform 0.12. Pin module version to ~> 2.0.1. Submit pull-requests to terraform012 branch.
 
 ## Usage
@@ -21,7 +22,7 @@ In most cases, you will just use the `source_account_id` parameter to trust the 
 ```hcl
 module "aws_iam_dest_user_group_role" {
   source  = "trussworks/iam-cross-acct-dest/aws"
-  version = "2.0.1"
+  version = "3.0.0"
 
   iam_role_name     = "group-name"
   source_account_id = "account-id"
@@ -34,7 +35,7 @@ However, if you want to make the dependency on the source role explicit, you can
 ```hcl
 module "aws_iam_dest_user_group_role" {
   source = "trussworks/iam-cross-acct-dest/aws"
-  version = "2.0.1"
+  version = "3.0.0"
   iam_role_name = "group-name"
   source_account_id = "account-id"
   source_account_role_names = ["group-name"]
@@ -46,14 +47,14 @@ module "aws_iam_dest_user_group_role" {
 
 | Name | Version |
 |------|---------|
-| terraform | ~> 0.12.0 |
-| aws | ~> 2.70 |
+| terraform | ~> 0.13.0 |
+| aws | ~> 3.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| aws | ~> 2.70 |
+| aws | ~> 3.0 |
 
 ## Inputs
 
