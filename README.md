@@ -10,6 +10,10 @@ Generally speaking, the role defined in this module should also map 1:1 to that 
 
 This module works on GovCloud.
 
+## Terraform Versions
+
+Terraform 0.12. Pin module version to ~> 2.0.1. Submit pull-requests to terraform012 branch.
+
 ## Usage
 
 In most cases, you will just use the `source_account_id` parameter to trust the user and group managment account; you can then keep all management of which of those users and groups can assume roles there. The following code illustrates that pattern:
@@ -17,7 +21,7 @@ In most cases, you will just use the `source_account_id` parameter to trust the 
 ```hcl
 module "aws_iam_dest_user_group_role" {
   source  = "trussworks/iam-cross-acct-dest/aws"
-  version = "1.0.3"
+  version = "2.0.1"
 
   iam_role_name     = "group-name"
   source_account_id = "account-id"
@@ -30,7 +34,7 @@ However, if you want to make the dependency on the source role explicit, you can
 ```hcl
 module "aws_iam_dest_user_group_role" {
   source = "trussworks/iam-cross-acct-dest/aws"
-  version = "1.0.3"
+  version = "2.0.1"
   iam_role_name = "group-name"
   source_account_id = "account-id"
   source_account_role_names = ["group-name"]
@@ -56,7 +60,9 @@ module "aws_iam_dest_user_group_role" {
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | iam\_role\_name | The name for the created role. Conceptually, this should correspond to a group. | `string` | n/a | yes |
+| mfa\_condition | MFA condition method. Use either Bool or BoolIfExists | `string` | `"Bool"` | no |
 | require\_mfa | Whether the created policy will include MFA. | `bool` | `true` | no |
+| role\_assumption\_max\_duration | Max duration that the assumed role is assumed for Must be between 3600 and 43200 (including) | `number` | `3600` | no |
 | source\_account\_id | The account id that the assume role call will be coming from. | `string` | n/a | yes |
 | source\_account\_role\_names | The name of the role that the assume role call will be coming from. Again, this should correspond to a group. | `list` | `[]` | no |
 
