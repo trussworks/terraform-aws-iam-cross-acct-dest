@@ -60,7 +60,9 @@ module "aws_iam_dest_user_group_role" {
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | iam\_role\_name | The name for the created role. Conceptually, this should correspond to a group. | `string` | n/a | yes |
+| mfa\_condition | MFA condition method. Use either Bool or BoolIfExists | `string` | `"Bool"` | no |
 | require\_mfa | Whether the created policy will include MFA. | `bool` | `true` | no |
+| role\_assumption\_max\_duration | Max duration that the assumed role is assumed for Must be between 3600 and 43200 (including) | `number` | `3600` | no |
 | source\_account\_id | The account id that the assume role call will be coming from. | `string` | n/a | yes |
 | source\_account\_role\_names | The name of the role that the assume role call will be coming from. Again, this should correspond to a group. | `list` | `[]` | no |
 
