@@ -10,6 +10,10 @@ Generally speaking, the role defined in this module should also map 1:1 to that 
 
 This module works on GovCloud.
 
+## Terraform Versions
+
+Terraform 0.12. Pin module version to ~> 2.0.1. Submit pull-requests to terraform012 branch.
+
 ## Usage
 
 In most cases, you will just use the `source_account_id` parameter to trust the user and group managment account; you can then keep all management of which of those users and groups can assume roles there. The following code illustrates that pattern:
@@ -17,7 +21,7 @@ In most cases, you will just use the `source_account_id` parameter to trust the 
 ```hcl
 module "aws_iam_dest_user_group_role" {
   source  = "trussworks/iam-cross-acct-dest/aws"
-  version = "1.0.3"
+  version = "2.0.1"
 
   iam_role_name     = "group-name"
   source_account_id = "account-id"
@@ -30,7 +34,7 @@ However, if you want to make the dependency on the source role explicit, you can
 ```hcl
 module "aws_iam_dest_user_group_role" {
   source = "trussworks/iam-cross-acct-dest/aws"
-  version = "1.0.3"
+  version = "2.0.1"
   iam_role_name = "group-name"
   source_account_id = "account-id"
   source_account_role_names = ["group-name"]
