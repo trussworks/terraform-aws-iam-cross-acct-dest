@@ -1,6 +1,6 @@
 module "test_group_role" {
   source            = "../../"
-  iam_role_name     = "${var.test_name}"
+  iam_role_name     = var.test_name
   source_account_id = var.source_account_id
 }
 
