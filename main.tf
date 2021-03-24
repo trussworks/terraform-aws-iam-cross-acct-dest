@@ -2,7 +2,10 @@ data "aws_partition" "current" {}
 
 data "aws_iam_policy_document" "role_assume_role_policy" {
   statement {
-    actions = ["sts:AssumeRole"]
+    actions = [
+      "sts:AssumeRole",
+      "sts:TagSession"
+    ]
 
     # can either trust account or specific roles in the account
     principals {
