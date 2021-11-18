@@ -30,4 +30,5 @@ resource "aws_iam_role" "main" {
   description          = "Cross-account role for ${var.iam_role_name}"
   assume_role_policy   = data.aws_iam_policy_document.role_assume_role_policy.json
   max_session_duration = var.role_assumption_max_duration
+  path                 = var.path
 }

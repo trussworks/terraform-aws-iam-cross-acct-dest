@@ -31,3 +31,9 @@ variable "mfa_condition" {
   type        = string
   default     = "Bool"
 }
+
+variable "path" {
+  description = "path to IAM role"
+  type        = string
+  default     = null
+}
