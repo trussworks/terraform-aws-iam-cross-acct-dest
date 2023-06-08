@@ -10,10 +10,6 @@ Generally speaking, the role defined in this module should also map 1:1 to that 
 
 This module works on GovCloud.
 
-## Terraform Versions
-
-Terraform 0.13. Pin module version to ~> 3.X. Submit pull-requests to master branch.
-Terraform 0.12. Pin module version to ~> 2.0.1. Submit pull-requests to terraform012 branch.
 
 ## Usage
 
@@ -42,12 +38,12 @@ module "aws_iam_dest_user_group_role" {
 }
 ```
 
-<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 3.0 |
 
 ## Providers
@@ -85,4 +81,4 @@ No modules.
 | Name | Description |
 |------|-------------|
 | <a name="output_iam_role_name"></a> [iam\_role\_name](#output\_iam\_role\_name) | The name of the created role. |
-<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- END_TF_DOCS -->
