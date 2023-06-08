@@ -43,51 +43,6 @@ module "aws_iam_dest_user_group_role" {
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13.0 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 3.0 |
-
-## Providers
-
-| Name | Version |
-|------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 3.0 |
-
-## Modules
-
-No modules.
-
-## Resources
-
-| Name | Type |
-|------|------|
-| [aws_iam_role.main](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
-| [aws_iam_policy_document.role_assume_role_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
-| [aws_partition.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/partition) | data source |
-
-## Inputs
-
-| Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
-| <a name="input_iam_role_name"></a> [iam\_role\_name](#input\_iam\_role\_name) | The name for the created role. Conceptually, this should correspond to a group. | `string` | n/a | yes |
-| <a name="input_mfa_condition"></a> [mfa\_condition](#input\_mfa\_condition) | MFA condition method. Use either Bool or BoolIfExists | `string` | `"Bool"` | no |
-| <a name="input_path"></a> [path](#input\_path) | path to IAM role | `string` | `null` | no |
-| <a name="input_require_mfa"></a> [require\_mfa](#input\_require\_mfa) | Whether the created policy will include MFA. | `bool` | `true` | no |
-| <a name="input_role_assumption_max_duration"></a> [role\_assumption\_max\_duration](#input\_role\_assumption\_max\_duration) | Max duration that the assumed role is assumed for Must be between 3600 and 43200 (including) | `number` | `3600` | no |
-| <a name="input_source_account_id"></a> [source\_account\_id](#input\_source\_account\_id) | The account id that the assume role call will be coming from. | `string` | n/a | yes |
-| <a name="input_source_account_role_names"></a> [source\_account\_role\_names](#input\_source\_account\_role\_names) | The name of the role that the assume role call will be coming from. Again, this should correspond to a group. | `list(any)` | `[]` | no |
-
-## Outputs
-
-| Name | Description |
-|------|-------------|
-| <a name="output_iam_role_name"></a> [iam\_role\_name](#output\_iam\_role\_name) | The name of the created role. |
-<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
-
-<!-- BEGIN_TF_DOCS -->
-## Requirements
-
-| Name | Version |
-|------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 3.0 |
 
