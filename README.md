@@ -10,10 +10,6 @@ Generally speaking, the role defined in this module should also map 1:1 to that 
 
 This module works on GovCloud.
 
-## Terraform Versions
-
-Terraform 0.13. Pin module version to ~> 3.X. Submit pull-requests to master branch.
-Terraform 0.12. Pin module version to ~> 2.0.1. Submit pull-requests to terraform012 branch.
 
 ## Usage
 
